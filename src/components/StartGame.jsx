@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useName } from "./PlayerProvider";
+import SceneSetup from "./SceneSetup";
+
 
 function StartScreen({ onStart }){
     const { setPLayerName } = useName();
@@ -16,6 +18,7 @@ function StartScreen({ onStart }){
         }
         setPlayerName(inputName);
         onStart();
+        SceneSetup();
     }
 
     return (
