@@ -8,9 +8,9 @@ export function HealthProvider({ children }) {
 
     const [health, setHealth] = useState(initialHealth);
     const [life, setLife] = useState('alive');
-  
+
     if (health < 0) {
-      setLife(lifeStatus => (lifeStatus ='dead'));
+      setLife(prevStatus => (prevStatus ='dead'));
   }
   }
 
