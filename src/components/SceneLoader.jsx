@@ -21,3 +21,5 @@ function SceneSetup ({sceneId, goTo}) {
     </div>
     );
 }
+
+export default SceneSetup;

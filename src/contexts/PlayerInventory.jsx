@@ -1,16 +1,21 @@
 import React, { createContext, useState, useContext } from 'react';
+import { loadGame, saveGame } from "./storage";
 
 const PlayerInventory = createContext();
 
 export function InventoryProvider({ children }) {
-  const [inventory, setInventory] = useState([]);
+  const saved = loadGame();
+  const [inventory, setInventory] = useState(saved?.inventory || []);
 
   function addItem(itemName){
-    setInventory(prev =>
-     prev.includes(itemName) ? prev : [...prev, itemName]
-    );
+    setInventory(prev =>prev.includes(itemName) ? prev : [...prev, itemName]);
   }
-  
+
+  useEffect(() => {
+    const current = loadGame() || {};
+    saveGame({ ...current, inventory });
+  }, [inventory]);
+
   return (
     <PlayerInventory.Provider value={{ inventory, addItem }}>
       {children}
