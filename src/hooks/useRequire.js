@@ -1,0 +1,18 @@
+import React, { useEffect } from 'react';
+import { useInventory } from "./InventoryProvider";
+
+export function useRequire (scene) {
+    const { inventory } = useInventory();
+
+    return scene.choices.filter(choice => {
+        if (choice.requires && !inventory.includes(choice.requires)) {
+            return false;
+        }
+
+        if (choice.hideIf && inventory.includes(choice.hideIf)) {
+            return false;
+        }
+
+        return true;
+    });
+}
