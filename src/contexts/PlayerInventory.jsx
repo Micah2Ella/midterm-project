@@ -3,26 +3,16 @@ import React, { createContext, useState, useContext } from 'react';
 const PlayerInventory = createContext();
 
 export function InventoryProvider({ children }) {
-  const [asin, setAsinPresent] = useState(false);
-  const [bawang, setBawangPresent] = useState(false);
-  const [agimat, setAgimatPresent] = useState(false);
+  const [inventory, setInventory] = useState([]);
+
+  function addItem(itemName){
+    setInventory(prev =>
+     prev.includes(itemName) ? prev : [...prev, itemName]
+    );
+  }
   
-  function ItemPresent() {
-    if (addItem = 'Asin') {
-      setAsinPresent = useState(true);
-  }
-
-    if (addItem = 'Bawang') {
-      setBawangPresent = useState(true);
-  }
-
-    if (addItem = 'Agimat') {
-      setAgimatPresent = useState(true);
-  }
-  }
-
   return (
-    <PlayerInventory.Provider value={{ asin, bawang, agimat, ItemPresent }}>
+    <PlayerInventory.Provider value={{ inventory, addItem }}>
       {children}
     </PlayerInventory.Provider>
   );

@@ -1,21 +1,24 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const PlayerHealth = createContext();
 
 export function HealthProvider({ children }) {
 
-  function LifeState( {initialHealth = 100} ) {
-
-    const [health, setHealth] = useState(initialHealth);
+    const [health, setHealth] = useState(100);
     const [life, setLife] = useState('alive');
 
-    if (health < 0) {
-      setLife(prevStatus => (prevStatus ='dead'));
-  }
-  }
+    useEffect (()=> {
+        if (health <= 0) {
+            setLife('dead');
+        }
+    }, [health]);
+
+    function TakeDamage(damage){
+        setHealth(prev => Math.max(prev - amount, 0));
+    }
 
   return (
-    <PlayerHealth.Provider value={{ health, life, LifeState }}>
+    <PlayerHealth.Provider value={{ health, life, TakeDamage }}>
       {children}
     </PlayerHealth.Provider>
   );
