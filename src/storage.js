@@ -8,6 +8,6 @@ export function loadGame() {
   return saved ? JSON.parse(saved) : null;
 }
 
-export function clearGame() {
+export function resetGame() {
   localStorage.removeItem("gameState");
 }

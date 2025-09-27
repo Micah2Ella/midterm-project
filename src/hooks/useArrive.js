@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useInventory } from "../contexts/PlayerInventory";
 import { useHealth } from "../contexts/PlayerHealth";
 

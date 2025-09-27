@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useName } from "../contexts/PlayerName";
 
 
-function StartScreen({ OnStart }){
+function StartScreen({ onStart }){
     const { setPlayerName } = useName();
     const [inputName, setInputName] = useState("");
 

@@ -1,8 +1,10 @@
 import React from "react";
 import { PlayerProvider, useName } from "./contexts/PlayerName";
+import { InventoryProvider } from "./contexts/PlayerInventory";
+import { HealthProvider } from "./contexts/PlayerHealth";
 import Game from "./components/Game"
 import StartScreen from "./components/StartGame";
-import { clearGame } from "./storage"
+import { resetAll } from "./hooks/useGameReset"
 
 function AppContent() {
   const { playerName, setPlayerName } = useName();
@@ -13,8 +15,7 @@ function AppContent() {
   }
 
   function handleReset() {
-    clearGame();            
-    setPlayerName("");      
+    resetAll();
     setStarted(false);      
   }
 
@@ -35,7 +36,11 @@ function AppContent() {
 export default function App() {
   return (
     <PlayerProvider>
-      <AppContent />
+      <InventoryProvider>
+        <HealthProvider>
+          <AppContent />  
+        </HealthProvider>
+      </InventoryProvider>
     </PlayerProvider>
   );
 }

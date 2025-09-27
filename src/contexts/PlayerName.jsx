@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import { loadGame, saveGame } from "../storage.js";
 
 const PlayerName = createContext();
@@ -13,7 +13,7 @@ export function PlayerProvider({ children }) {
   }, [playerName]);
 
   function resetName() {
-    setPlayerName('');
+    setPlayerName("");
   }
   
   return (

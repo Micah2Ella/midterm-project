@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useInventory } from "../contexts/PlayerInventory";
 
 export function useRequire (scene) {

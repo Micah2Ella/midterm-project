@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import storyData from "../data/story.json";
 import { useArrive } from "../hooks/useArrive";
 import { useRequire } from "../hooks/useRequire";
