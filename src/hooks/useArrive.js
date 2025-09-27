@@ -3,8 +3,8 @@ import { useInventory } from "../contexts/PlayerInventory";
 import { useHealth } from "../contexts/PlayerHealth";
 
 export function useArrive (scene) {
-    const { addItem } = useInventory;
-    const { takeDamage } = useHealth ;
+    const { addItem } = useInventory();
+    const { takeDamage } = useHealth();
 
     useEffect (() => {
         if (scene.onArrive?.addItem) {
