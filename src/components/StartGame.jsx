@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useName } from "./PlayerProvider";
-import SceneSetup from "./SceneSetup";
+import { useState } from "react";
+import { useName } from "../contexts/PlayerName";
 
 
 function StartScreen({ onStart }){
-    const { setPLayerName } = useName();
+    const { setPlayerName } = useName();
     const [inputName, setInputName] = useState("");
 
     function handleChange(event) {
@@ -18,7 +17,7 @@ function StartScreen({ onStart }){
         }
         setPlayerName(inputName);
         onStart();
-        SceneSetup();
+        
     }
 
     return (
@@ -32,7 +31,7 @@ function StartScreen({ onStart }){
             />
             <p>
                 This is the start of Aswang Hunters! Are you ready for the quest
-                {inputName ? ', ${inputName}' : "..."}?
+                {inputName ? `, ${inputName}` : "..."}?
             </p>
             <button onClick={handleStartClick}>Start Game</button>
         </div>

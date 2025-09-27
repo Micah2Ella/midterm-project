@@ -1,19 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import StartScreen from "./SceneScreen";
+import React from "react";
+import { PlayerProvider, useName } from "./contexts/PlayerName";
+import { InventoryProvider } from "./contexts/PlayerInventory";
+import { HealthProvider } from "./contexts/PlayerHealth";
+import Game from "./components/Game"
+import StartScreen from "./components/StartGame";
+import { useGameReset } from "./hooks/useGameReset"
 
-function App() {
+function AppContent() {
+  const { playerName, setPlayerName } = useName();
+  const [started, setStarted] = React.useState(!!playerName);
+
+  const resetAll = useGameReset();
+
+  function handleStart() {
+    setStarted(true);
+  }
+
+  function handleReset() {
+    resetAll();
+    setStarted(false);      
+  }
 
   return (
     <>
-      <h1>Aswang Hunters</h1>
-      <div className="card">
-        StartScreen();
-      </div>
+      {started ? (
+        <>
+          <Game />
+          <button onClick={handleReset}>Reset Game</button>
+        </>
+      ) : (
+        <StartScreen onStart={handleStart} />
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <PlayerProvider>
+      <InventoryProvider>
+        <HealthProvider>
+          <AppContent />  
+        </HealthProvider>
+      </InventoryProvider>
+    </PlayerProvider>
+  );
+}

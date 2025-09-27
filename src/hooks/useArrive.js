@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { useInventory } from "./InventoryProvider";
-import { useHealth } from "./HealthProvider";
+import { useEffect } from 'react';
+import { useInventory } from "../contexts/PlayerInventory";
+import { useHealth } from "../contexts/PlayerHealth";
 
 export function useArrive (scene) {
-    const { addItem } = useInventory;
-    const { takeDamage } = useHealth ;
+    const { addItem } = useInventory();
+    const { takeDamage } = useHealth();
 
     useEffect (() => {
         if (scene.onArrive?.addItem) {

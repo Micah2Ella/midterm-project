@@ -1,5 +1,5 @@
-import React, { createContext, useState, useContext } from 'react';
-import { loadGame, saveGame } from "./storage";
+import { createContext, useState, useContext, useEffect } from 'react';
+import { loadGame, saveGame } from "../storage.js";
 
 const PlayerInventory = createContext();
 
@@ -16,8 +16,12 @@ export function InventoryProvider({ children }) {
     saveGame({ ...current, inventory });
   }, [inventory]);
 
+  function resetInventory() {
+    setInventory([]);
+  }
+
   return (
-    <PlayerInventory.Provider value={{ inventory, addItem }}>
+    <PlayerInventory.Provider value={{ inventory, addItem, resetInventory }}>
       {children}
     </PlayerInventory.Provider>
   );

@@ -1,3 +1,4 @@
+
 export function saveGame(data) {
   localStorage.setItem("gameState", JSON.stringify(data));
 }
@@ -7,6 +8,6 @@ export function loadGame() {
   return saved ? JSON.parse(saved) : null;
 }
 
-export function clearGame() {
+export function resetGame() {
   localStorage.removeItem("gameState");
 }
