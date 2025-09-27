@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useInventory } from "./InventoryProvider";
-import { useHealth } from "./HealthProvider";
+import { useInventory } from "../contexts/PlayerInventory";
+import { useHealth } from "../contexts/PlayerHealth";
 
 export function useArrive (scene) {
     const { addItem } = useInventory;

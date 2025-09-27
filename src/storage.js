@@ -1,3 +1,4 @@
+
 export function saveGame(data) {
   localStorage.setItem("gameState", JSON.stringify(data));
 }

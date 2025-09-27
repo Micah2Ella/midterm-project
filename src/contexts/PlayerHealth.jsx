@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { loadGame, saveGame } from "./storage";
+import { loadGame, saveGame } from "../storage.js";
 
 const PlayerHealth = createContext();
 
@@ -20,8 +20,12 @@ export function HealthProvider({ children }) {
         saveGame({ ...current, health, life });
   }, [health, life]);
 
+  function resetHealth() {
+    setHealth(100);
+  }
+
   return (
-    <PlayerHealth.Provider value={{ health, life, TakeDamage }}>
+    <PlayerHealth.Provider value={{ health, life, TakeDamage, resetHealth }}>
       {children}
     </PlayerHealth.Provider>
   );

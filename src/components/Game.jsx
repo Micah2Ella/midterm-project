@@ -1,8 +1,7 @@
 import React from "react";
-import { loadGame, saveGame } from "./storage";
-import SceneSetup from "./SceneSetup";
-import { useInventory } from "./InventoryProvider";
-import { useHealth } from "./HealthProvider";
+import { loadGame, saveGame } from "../storage";
+import SceneSetup from "./SceneLoader";
+
 
 function Game() {
   const saved = loadGame();

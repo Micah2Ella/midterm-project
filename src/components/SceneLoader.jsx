@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import storyData from "./story.json";
-import { useArrive } from "./useArrive";
-import { useRequire } from "./useRequire";
-import { useInventory } from "./InventoryProvider";
-import { useHealth } from "./HealthProvider";
+import storyData from "../data/story.json";
+import { useArrive } from "../hooks/useArrive";
+import { useRequire } from "../hooks/useRequire";
+import { useInventory } from "../contexts/PlayerInventory";
+import { useHealth } from "../contexts/PlayerHealth";
 
 function SceneSetup ({sceneId, goTo}) {
     const { health } = useHealth;
